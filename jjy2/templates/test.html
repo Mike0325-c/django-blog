@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css'%}">
+    <script src="{% static 'js/jquery_3.6.0.js' %}"></script>
+    <script src="{% static 'bootstrap-3.4.1-dist/js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+{#<p>{{ n }}</p>#}
+{#<p>{{ f }}</p>#}
+{#<p>{{ s}}</p>#}
+{#<p>{{ b }}</p>#}
+{#<p>{{ list1.0 }}</p>#}
+{#<p>{{ tuple1 }}</p>#}
+{#<p>{{ dict1.hobby.2.info }}</p>#}
+{#<p>{{ set1 }}</p>#}
+{#<p>{{ func }}</p>#}
+{#<p>类名:{{ Myclass }}</p>#}
+{#<p>对象:{{ obj }}</p>#}
+{#<p>{{ obj.get_class }}</p>#}
+{#<p>{{ obj.get_func }}</p>#}
+{#<p>{{ obj.get_self }}</p>#}
+
+{#<h1>过滤器</h1>#}
+{#<p>统计字符串长度:{{ s|length }}</p>#}
+{##}
+{#<p>默认值:{{ b|default:'hahah' }}</p>#}
+{#<p>默认值:{{ c|default:'hahah' }}</p>#}
+{# default:如果前面数据有值,那就是前面的值(True),如果没有(False),那就是默认值#}
+{#<p>文件大小:{{ file_size|filesizeformat }}</p>#}
+{# 将数字变成文件大小的格式#}
+{#<p>日期格式:{{ current_time|date:'Y-m-d h:i:s' }}</p>#}
+{#<p>切片操作:{{ list1|slice:'0:4:2' }}</p>#}
+{#<p>截取字符串(包括三个点):{{ info|truncatechars:9 }}</p>#}
+{#<p>截取单词:{{ eng|truncatewords:9}}</p>#}
+{#<p>移除字符:{{ eng|cut:' ' }}</p>#}
+{#<p>拼接字符:{{ list1|join:'%' }}</p>#}
+{#<p>加法:{{ n|add:10 }}</p>#}
+{#<p>加法:{{ s|add:info }}</p>#}
+{#<p>转义:{{ h|safe }}</p>#}
+{#<p>转义:{{ res }}</p>#}
+{##}
+{#<h1>标签</h1>#}
+{#{% for foo in list1 %}#}
+{#    <p>{{ foo }}</p>#}
+{#    <p>{{ forloop }}</p>#}
+{#{% endfor %}#}
+{#{% if b %}#}
+{#    <p>hello</p>#}
+{#{% elif s %}#}
+{#    <p>good</p>#}
+{#{% else %}#}
+{#    <p>bad</p>#}
+{#{% endif %}#}
+{#{% for foo in li %}#}
+{#    {% if forloop.first %}#}
+{#        <p>这是第一次</p>#}
+{#    {% elif forloop.last %}#}
+{#        <p>这是最后一次</p>#}
+{#    {% else %}#}
+{#        <p>{{ foo }}</p>#}
+{#    {% endif %}#}
+{#    {% empty %}#}
+{#        <p>for循环的可迭代对象内部没有元素,没法循环</p>#}
+{#{% endfor %}#}
+{##}
+{# 其他字典的处理方法#}
+{#{% for foo in dict1.keys %}#}
+{#    <p>{{ foo }}</p>#}
+{#{% endfor %}#}
+{#{% for foo in dict1.values %}#}
+{#    <p>{{ foo }}</p>#}
+{#{% endfor %}#}
+{#{% for foo in dict1.items %}#}
+{#    <p>{{ foo }}</p>#}
+{#{% endfor %}#}
+{##}
+{# with起别名#}
+{#{% with dict1.hobby.2.info as nb %}#}
+{#    <p>{{ nb }}</p>#}
+{#    在with语法内就可以通过as后面的别名快速的访问到前面非常复杂获取数据的方式#}
+{#{% endwith %}#}
+
+<h1>自定义过滤器的使用</h1>
+{% load mytag %}
+<p>{{ n|hello:666 }}</p>
+
+<p>标签多个参数彼此之间空格隔开</p>
+<p>{% plus 123 123 123 123 %}</p>
+
+{% load mytag %}
+<h1>自定义inclusion_tag使用</h1>
+{% left 5 %}
+</body>
+</html>
